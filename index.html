@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MERCELYS™ — Engineered for Euphoria</title>
+  <meta name="description" content="MERCELYS™ — Where Cold Meets Couture. Precision-crafted artisanal ice cream engineered for euphoria. The future of flavor." />
+
+  <!-- Preconnect for fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- GSAP + ScrollTrigger via CDN (globals) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Global Particle Canvas (cryo crystals) -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav id="main-nav" aria-label="Main navigation">
+    <a href="#hero" class="nav-logo" id="nav-logo-link">
+      <span class="logo-text">MERCELYS</span><sup class="logo-tm">™</sup>
+    </a>
+    <div class="nav-links">
+      <a href="#flavors" id="nav-link-collection">Collection</a>
+      <a href="#about" id="nav-link-story">Story</a>
+      <a href="#experience" id="nav-link-experience">Experience</a>
+      <a href="#order" class="nav-cta" id="nav-link-order">Order Now</a>
+    </div>
+  </nav>
+
+  <!-- ============ SECTION 1: HERO (scroll-driven frame animation) ============ -->
+  <!-- Loader overlay -->
+  <div id="hero-loader">
+    <div class="loader-logo">MERCELYS<sup>™</sup></div>
+    <div class="loader-bar-wrap"><div class="loader-bar" id="loader-bar"></div></div>
+    <div class="loader-label" id="loader-label">Loading experience…</div>
+  </div>
+
+  <!-- Tall scroll container — height set in CSS (500vh) -->
+  <div id="hero-scroll-container">
+    <div id="hero-sticky">
+
+      <!-- Frame sequence canvas (fills viewport) -->
+      <canvas id="hero-frame-canvas"></canvas>
+
+      <!-- Cinematic grade: dark vignette -->
+      <div class="hero-vignette"></div>
+
+      <!-- Aurora gradient mesh -->
+      <div class="hero-aurora"></div>
+
+      <!-- Scanline texture -->
+      <div class="hero-scanlines"></div>
+
+      <!-- Scroll progress bar -->
+      <div id="hero-progress-bar"></div>
+
+      <!-- Phase label -->
+      <div id="hero-phase">INCEPTION</div>
+
+      <!-- Floating cryo-data HUD tags -->
+      <div class="hero-data-tag" id="data-temp">−18°C</div>
+      <div class="hero-data-tag" id="data-steep">96h Steep</div>
+      <div class="hero-data-tag" id="data-natural">0 Additives</div>
+      <div class="hero-data-tag" id="data-craft">Cryo-Crafted</div>
+
+      <!-- Hero overlay text -->
+      <div class="hero-content">
+        <div class="hero-eyebrow" id="hero-eyebrow">
+          <span class="eyebrow-line"></span>
+          <span>Precision · Pleasure · Pure Cold</span>
+          <span class="eyebrow-line"></span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="hero-wordmark" id="hero-wordmark">MERCELYS</span>
+          <span class="hero-subtitle" id="hero-subtitle">Engineered for Euphoria</span>
+        </h1>
+
+        <p class="hero-desc" id="hero-desc">Where molecular science meets sensory transcendence — every scoop a masterwork of precision gastronomy, frozen in perfect time.</p>
+
+        <a href="#flavors" class="btn-ripple" id="hero-cta">
+          <span class="btn-text">Explore the Collection</span>
+          <span class="btn-shimmer"></span>
+        </a>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-hint" id="scroll-hint">
+        <div class="scroll-line"></div>
+        <span>SCROLL</span>
+      </div>
+
+      <!-- Frame counter badge -->
+      <div class="hero-frame-badge" id="hero-frame-badge">
+        <span id="frame-display">054</span> / 190
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ SECTION 2: BRAND STORY ============ -->
+  <section id="about" class="section-about">
+    <div class="about-inner">
+      <div class="about-visual">
+        <div class="about-img-wrap">
+          <img src="./images/mercelys_passion_fruit_1776187605814.png" alt="MERCELYS Precision Craft" class="about-img" loading="lazy" />
+          <div class="about-img-overlay"></div>
+          <div class="about-img-border"></div>
+        </div>
+      </div>
+
+      <div class="about-text">
+        <div class="about-eyebrow">The Philosophy</div>
+
+        <h2 class="about-heading">
+          <span class="reveal-word">Where</span>
+          <span class="reveal-word">Cold</span>
+          <span class="reveal-word">Meets</span><br>
+          <span class="reveal-word accent-word">Couture</span>
+        </h2>
+
+        <div class="about-body">
+          <p>MERCELYS began as an obsession. A question that kept its founders awake: what if ice cream could achieve the emotional resonance of fine art? What if each flavor was a complete sensory world — cold, precise, unforgettable?</p>
+          <p>Three years of research. Forty-seven failed iterations. One uncompromising standard: perfection.</p>
+        </div>
+
+        <div class="about-quote">
+          <span class="quote-mark">"</span>
+          <blockquote>Cold. Crafted. Coveted.</blockquote>
+        </div>
+      </div>
+    </div>
+
+    <!-- Marquee strip -->
+    <div class="marquee-strip">
+      <div class="marquee-strip-inner">
+        <span>ENGINEERED FOR EUPHORIA</span><span class="strip-sep">◆</span>
+        <span>THE FUTURE OF FLAVOR</span><span class="strip-sep">◆</span>
+        <span>COLD. CRAFTED. COVETED.</span><span class="strip-sep">◆</span>
+        <span>PRECISION PLEASURE</span><span class="strip-sep">◆</span>
+        <span>ENGINEERED FOR EUPHORIA</span><span class="strip-sep">◆</span>
+        <span>THE FUTURE OF FLAVOR</span><span class="strip-sep">◆</span>
+        <span>COLD. CRAFTED. COVETED.</span><span class="strip-sep">◆</span>
+        <span>PRECISION PLEASURE</span><span class="strip-sep">◆</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3: FLAVOR COLLECTION ============ -->
+  <section id="flavors" class="section-flavors">
+    <div class="section-header">
+      <div class="section-eyebrow">The Collection</div>
+      <h2 class="section-title">Flavor Architecture</h2>
+      <p class="section-desc">Six masterworks of molecular gastronomy — each a unique color frequency, each an emotional world of its own.</p>
+    </div>
+
+    <div class="flavor-grid">
+
+      <!-- 01 Passion Fruit -->
+      <div class="flavor-card" id="card-passion" data-color="#FFB830" data-rgb="255,184,48" style="--c:#FFB830">
+        <div class="card-glass">
+          <div class="card-img-wrap">
+            <img src="./images/mercelys_passion_fruit_1776187605814.png" alt="Passion Fruit" loading="lazy" />
+            <div class="card-glow-overlay"></div>
+          </div>
+          <div class="card-body">
+            <span class="card-num">01</span>
+            <h3 class="card-name">Passion Fruit</h3>
+            <p class="card-tagline">Liquid Gold Edition</p>
+            <p class="card-desc">Sun-ripened passion fruit suspended in Madagascar cream. A euphoric burst of tropical citrus and pure sunshine.</p>
+            <div class="card-tags">
+              <span>Passion Fruit</span><span>Madagascar Cream</span><span>Cane Sugar</span>
+            </div>
+            <button class="card-btn" id="btn-passion">Add to Order</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 Berry Ultraviolet -->
+      <div class="flavor-card" id="card-berry" data-color="#A855F7" data-rgb="168,85,247" style="--c:#A855F7">
+        <div class="card-glass">
+          <div class="card-img-wrap">
+            <img src="./images/berry_scoop.png" alt="Berry Ultraviolet" loading="lazy"
+                 onerror="this.src='./images/mercelys_scoops_levitating_1776187621454.png'" />
+            <div class="card-glow-overlay"></div>
+          </div>
+          <div class="card-body">
+            <span class="card-num">02</span>
+            <h3 class="card-name">Berry Ultraviolet</h3>
+            <p class="card-tagline">Dark Matter Reserve</p>
+            <p class="card-desc">A constellation of wild blackberries, elderberries and blueberries — deep, complex, impossibly rich.</p>
+            <div class="card-tags">
+              <span>Blackberry</span><span>Blueberry</span><span>Elderflower</span>
+            </div>
+            <button class="card-btn" id="btn-berry">Add to Order</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 Matcha Biolumine -->
+      <div class="flavor-card" id="card-matcha" data-color="#00FF87" data-rgb="0,255,135" style="--c:#00FF87">
+        <div class="card-glass">
+          <div class="card-img-wrap">
+            <img src="./images/matcha_scoop.png" alt="Matcha Biolumine" loading="lazy"
+                 onerror="this.src='./images/mercelys_passion_fruit_1776187605814.png'" />
+            <div class="card-glow-overlay"></div>
+          </div>
+          <div class="card-body">
+            <span class="card-num">03</span>
+            <h3 class="card-name">Matcha Biolumine</h3>
+            <p class="card-tagline">Ceremonial Grade</p>
+            <p class="card-desc">ceremonial-grade Japanese matcha with a clean vegetal depth — the intersection of ancient tradition and the future.</p>
+            <div class="card-tags">
+              <span>Ceremonial Matcha</span><span>Oat Cream</span><span>Yuzu</span>
+            </div>
+            <button class="card-btn" id="btn-matcha">Add to Order</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 Coconut Frost -->
+      <div class="flavor-card" id="card-coconut" data-color="#00FFD1" data-rgb="0,255,209" style="--c:#00FFD1">
+        <div class="card-glass">
+          <div class="card-img-wrap">
+            <img src="./images/mercelys_scoops_levitating_1776187621454.png" alt="Coconut Frost" loading="lazy" />
+            <div class="card-glow-overlay"></div>
+          </div>
+          <div class="card-body">
+            <span class="card-num">04</span>
+            <h3 class="card-name">Coconut Frost</h3>
+            <p class="card-tagline">Arctic Reserve</p>
+            <p class="card-desc">Virgin coconut cream from the Maldives kissed with lime zest and toasted pandan — arctic elegance, pure.</p>
+            <div class="card-tags">
+              <span>Virgin Coconut</span><span>Lime Zest</span><span>Pandan</span>
+            </div>
+            <button class="card-btn" id="btn-coconut">Add to Order</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 Midnight Vanilla -->
+      <div class="flavor-card" id="card-vanilla" data-color="#F0F4FF" data-rgb="240,244,255" style="--c:#F0F4FF">
+        <div class="card-glass">
+          <div class="card-img-wrap">
+            <img src="./images/hero_mercelys_premium_1776188936270.png" alt="Midnight Vanilla" loading="lazy" />
+            <div class="card-glow-overlay"></div>
+          </div>
+          <div class="card-body">
+            <span class="card-num">05</span>
+            <h3 class="card-name">Midnight Vanilla</h3>
+            <p class="card-tagline">Tahitian Black Pearl</p>
+            <p class="card-desc">Tahitian black vanilla pods steeped for 72 hours in cold-press Normandy cream. Profound. Timeless.</p>
+            <div class="card-tags">
+              <span>Tahitian Vanilla</span><span>Normandy Cream</span><span>Sea Salt</span>
+            </div>
+            <button class="card-btn" id="btn-vanilla">Add to Order</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 06 Rose Lychee — wide card -->
+      <div class="flavor-card card-wide" id="card-rose" data-color="#FF6B9D" data-rgb="255,107,157" style="--c:#FF6B9D">
+        <div class="card-glass">
+          <div class="card-img-wrap">
+            <img src="./images/mercelys_tub_splash_1776187637928.png" alt="Rose Lychee" loading="lazy" />
+            <div class="card-glow-overlay"></div>
+          </div>
+          <div class="card-body">
+            <span class="card-num">06</span>
+            <h3 class="card-name">Rose Lychee</h3>
+            <p class="card-tagline">Pink Lotus Atelier</p>
+            <p class="card-desc">Damascus rose water with hand-peeled Taiwanese lychee — floral, feminine, ethereal. A scent made gloriously edible.</p>
+            <div class="card-tags">
+              <span>Damascus Rose</span><span>Taiwan Lychee</span><span>Champagne</span>
+            </div>
+            <button class="card-btn" id="btn-rose">Add to Order</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4: WHY MERCELYS ============ -->
+  <section id="experience" class="section-experience">
+    <div class="exp-bg">
+      <img src="./images/mercelys_tub_splash_1776187637928.png" alt="" aria-hidden="true" />
+      <div class="exp-overlay"></div>
+    </div>
+    <div class="experience-inner">
+      <div class="section-header">
+        <div class="section-eyebrow">The Numbers</div>
+        <h2 class="section-title">The MERCELYS Standard</h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card" id="stat-flavors" data-target="12" data-suffix="">
+          <div class="stat-num"><span class="count" data-target="12">0</span></div>
+          <div class="stat-label">Exotic Flavors</div>
+          <div class="stat-desc">Carefully curated profiles from the world's finest ingredient sources</div>
+        </div>
+        <div class="stat-card" id="stat-temp" data-target="0" data-suffix="°C">
+          <div class="stat-num"><span class="count" data-target="0">0</span><span class="stat-unit">°C</span></div>
+          <div class="stat-label">Precision Craft</div>
+          <div class="stat-desc">Temperature-controlled at every single stage of creation and delivery</div>
+        </div>
+        <div class="stat-card" id="stat-natural" data-target="100" data-suffix="%">
+          <div class="stat-num"><span class="count" data-target="100">0</span><span class="stat-unit">%</span></div>
+          <div class="stat-label">Natural Ingredients</div>
+          <div class="stat-desc">Zero artificial preservatives. Zero compromises. Pure flavor only.</div>
+        </div>
+        <div class="stat-card" id="stat-steep" data-target="48" data-suffix="h">
+          <div class="stat-num"><span class="count" data-target="48">0</span><span class="stat-unit">h</span></div>
+          <div class="stat-label">Steep Time</div>
+          <div class="stat-desc">Each batch slow-infused for maximum depth, complexity, and nuance</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 5: TESTIMONIALS ============ -->
+  <section id="testimonials" class="section-testimonials">
+    <div class="section-header">
+      <div class="section-eyebrow">The Verdict</div>
+      <h2 class="section-title">What They Say</h2>
+    </div>
+    <div class="t-marquee-wrap">
+      <div class="t-marquee-track" id="t-track">
+        <div class="t-card">
+          <div class="t-top"><img src="https://i.pravatar.cc/60?img=11" alt="Élise" class="t-avatar"><div class="t-stars">★★★★★</div></div>
+          <p>"MERCELYS isn't ice cream. It's a spiritual experience. I've dined at three-Michelin-star restaurants and nothing prepared me for this."</p>
+          <span class="t-author">— Élise Fontaine, Paris</span>
+        </div>
+        <div class="t-card">
+          <div class="t-top"><img src="https://i.pravatar.cc/60?img=22" alt="Kenji" class="t-avatar"><div class="t-stars">★★★★★</div></div>
+          <p>"Berry Ultraviolet changed my understanding of what dessert can be. It's not food — it's art you consume with reverence."</p>
+          <span class="t-author">— Kenji Yamamoto, Tokyo</span>
+        </div>
+        <div class="t-card">
+          <div class="t-top"><img src="https://i.pravatar.cc/60?img=33" alt="Sofia" class="t-avatar"><div class="t-stars">★★★★★</div></div>
+          <p>"I ordered three tubs. They lasted two days. Regret? None. The Passion Fruit is liquid sunshine in its purest form."</p>
+          <span class="t-author">— Sofia Reyes, Barcelona</span>
+        </div>
+        <div class="t-card">
+          <div class="t-top"><img src="https://i.pravatar.cc/60?img=44" alt="Marcus" class="t-avatar"><div class="t-stars">★★★★★</div></div>
+          <p>"The cryo-mist packaging alone is worth the price. When you open it — genuinely cinematic. Then the taste hits you."</p>
+          <span class="t-author">— Marcus Webb, London</span>
+        </div>
+        <div class="t-card">
+          <div class="t-top"><img src="https://i.pravatar.cc/60?img=55" alt="Aisha" class="t-avatar"><div class="t-stars">★★★★★</div></div>
+          <p>"Matcha Biolumine is the most sophisticated thing I've ever tasted. Umami, floral, cold — absolutely transcendent."</p>
+          <span class="t-author">— Aisha Al-Maktoum, Dubai</span>
+        </div>
+        <div class="t-card">
+          <div class="t-top"><img src="https://i.pravatar.cc/60?img=66" alt="Priya" class="t-avatar"><div class="t-stars">★★★★★</div></div>
+          <p>"Worth every penny. MERCELYS treats ice cream the way it deserves — as high art, as luxury, as an experience."</p>
+          <span class="t-author">— Priya Kapoor, Mumbai</span>
+        </div>
+        <!-- Duplicates for seamless loop -->
+        <div class="t-card">
+          <div class="t-top"><img src="https://i.pravatar.cc/60?img=11" alt="Élise" class="t-avatar"><div class="t-stars">★★★★★</div></div>
+          <p>"MERCELYS isn't ice cream. It's a spiritual experience. I've dined at three-Michelin-star restaurants and nothing prepared me for this."</p>
+          <span class="t-author">— Élise Fontaine, Paris</span>
+        </div>
+        <div class="t-card">
+          <div class="t-top"><img src="https://i.pravatar.cc/60?img=22" alt="Kenji" class="t-avatar"><div class="t-stars">★★★★★</div></div>
+          <p>"Berry Ultraviolet changed my understanding of what dessert can be. It's not food — it's art you consume with reverence."</p>
+          <span class="t-author">— Kenji Yamamoto, Tokyo</span>
+        </div>
+        <div class="t-card">
+          <div class="t-top"><img src="https://i.pravatar.cc/60?img=33" alt="Sofia" class="t-avatar"><div class="t-stars">★★★★★</div></div>
+          <p>"I ordered three tubs. They lasted two days. Regret? None. The Passion Fruit is liquid sunshine in its purest form."</p>
+          <span class="t-author">— Sofia Reyes, Barcelona</span>
+        </div>
+        <div class="t-card">
+          <div class="t-top"><img src="https://i.pravatar.cc/60?img=44" alt="Marcus" class="t-avatar"><div class="t-stars">★★★★★</div></div>
+          <p>"The cryo-mist packaging alone is worth the price. When you open it — genuinely cinematic. Then the taste hits you."</p>
+          <span class="t-author">— Marcus Webb, London</span>
+        </div>
+        <div class="t-card">
+          <div class="t-top"><img src="https://i.pravatar.cc/60?img=55" alt="Aisha" class="t-avatar"><div class="t-stars">★★★★★</div></div>
+          <p>"Matcha Biolumine is the most sophisticated thing I've ever tasted. Umami, floral, cold — absolutely transcendent."</p>
+          <span class="t-author">— Aisha Al-Maktoum, Dubai</span>
+        </div>
+        <div class="t-card">
+          <div class="t-top"><img src="https://i.pravatar.cc/60?img=66" alt="Priya" class="t-avatar"><div class="t-stars">★★★★★</div></div>
+          <p>"Worth every penny. MERCELYS treats ice cream the way it deserves — as high art, as luxury, as an experience."</p>
+          <span class="t-author">— Priya Kapoor, Mumbai</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 6: ORDER CTA ============ -->
+  <section id="order" class="section-cta">
+    <div class="cta-scanlines"></div>
+    <div class="cta-aurora-bg"></div>
+    <div class="cta-inner">
+      <div class="section-eyebrow">Your Obsession Awaits</div>
+      <h2 class="cta-headline">Your Next Obsession<br>is One Click Away</h2>
+      <p class="cta-sub">Limited batches. Crafted weekly. Delivered in cryo-preserved packaging that arrives as theater.</p>
+      <a href="#" class="btn-pulse" id="order-cta-btn">
+        <span>Order Your Collection</span>
+        <span class="btn-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer id="footer" class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">MERCELYS<sup>™</sup></div>
+        <p class="footer-tagline">Precision. Pleasure. Pure Cold.</p>
+      </div>
+
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h4>Collection</h4>
+          <a href="#flavors">Passion Fruit</a>
+          <a href="#flavors">Berry Ultraviolet</a>
+          <a href="#flavors">Matcha Biolumine</a>
+          <a href="#flavors">Coconut Frost</a>
+        </div>
+        <div class="footer-col">
+          <h4>Brand</h4>
+          <a href="#about">Our Story</a>
+          <a href="#experience">The Process</a>
+          <a href="#">Sourcing</a>
+          <a href="#">Press</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="#">Order Inquiry</a>
+          <a href="#">Wholesale</a>
+          <a href="#">Collaborations</a>
+        </div>
+      </div>
+
+      <div class="footer-social">
+        <a href="#" class="social-link" id="social-ig" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="#" class="social-link" id="social-x" aria-label="X (Twitter)">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" class="social-link" id="social-tt" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.26 8.26 0 004.83 1.56V6.81a4.85 4.85 0 01-1.07-.12z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 MERCELYS™ — All rights reserved. The Future of Flavor.</p>
+    </div>
+  </footer>
+
+  <script defer src="./main.js"></script>
+</body>
+</html>
